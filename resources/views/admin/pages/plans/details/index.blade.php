@@ -1,14 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Planos')
+@section('title', 'Detalhs do Plano')
 
 @section('content_header')
-    <h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="fas fa-plus-square"></i> Adicionar</a></h1>
+    <h1>Planos <a href="{{ route('plan.details.create', $plan->url) }}" class="btn btn-dark"><i class="fas fa-plus-square"></i> Adicionar</a></h1>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
           <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Plans</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('plan.details.index', $plan->url) }}">Details</a></li>
         </ol>
       </nav>
 
@@ -17,11 +19,6 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('plans.search') }}" method="POST" class="form form-inline">
-                @csrf
-                <input type="text" name="filter" placeholder="Nome" class="form-control" value=" {{ $filters['filter'] ?? '' }}">
-                <button type="submit" class="btn btn-dark btn-small"><i class="fas fa-search"></i> Pesquisar</button>
-            </form>
             @include('admin.includes.alerts')
         </div>
         <div class="card-body">
@@ -34,19 +31,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($plans as $plan)
+                    @foreach ($details as $detail)
                     <tr>
                         <td>
-                            <a href="{{ route('plans.show', $plan->url) }}">
-                            {{ $plan->name }}
-                            </a>   
+                            {{ $detail->name }}    
                         </td>
                         <td>
+                            
                         </td>
-                        <td width="280">
+                        <td width="220">
                             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
-                                <a href="{{ route('plan.details.index', $plan->url) }}" class="btn btn-info">Detalhes</a>
-                                <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-warning">Editar</a>
+                                <a href="{{ route('plan.details.show', [$plan->url, $detail->id]) }}" class="btn btn-info">Ver</a>
+                                <a href="{{ route('plan.details.edit', [$plan->url, $detail->id]) }}" class="btn btn-warning">Editar</a>
                             
                                 @csrf
                                 @method('DELETE')
@@ -59,12 +55,6 @@
             </table>
         </div>
         <div class="card-footer">
-            @if (isset($filters))
-                {!! $plans->appends($filters)->links() !!}
-            @else
-                {!! $plans->links() !!}
-            @endif
-
         </div>                
 
     </div>
