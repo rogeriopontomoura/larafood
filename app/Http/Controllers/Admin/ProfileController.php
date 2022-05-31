@@ -16,6 +16,7 @@ class ProfileController extends Controller
     {
         $this->repository = $profile;
     }
+    
     /**
      * Display a listing of the resource.
      *
