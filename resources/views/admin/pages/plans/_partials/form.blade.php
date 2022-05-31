@@ -1,5 +1,5 @@
 @include('admin.includes.alerts')
-
+@csrf
 <div class="card-header">
 {{ $plan->name  ?? 'Cadastrar'  }}
 </div>

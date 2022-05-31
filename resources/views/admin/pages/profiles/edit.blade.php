@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Plano')
+@section('title', 'Editar Perfil')
 
 @section('content_header')
     <h1>Editando</h1>
@@ -9,10 +9,10 @@
 @section('content')
     <div class="card">
 
-        <form action=" {{ route('plans.update', $plan->url) }} " method="POST">
+        <form action=" {{ route('profiles.update', $profile->id) }} " method="POST">
             @csrf
             @method('PUT')          
-            @include('admin.pages.plans._partials.form')           
+            @include('admin.pages.profiles._partials.form')           
     </form>
     </div>
 @stop

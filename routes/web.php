@@ -16,8 +16,12 @@ Route::prefix('admin')
     ->group(function () {
 
 
+// Routes Profiles
+Route::any('profiles/search', 'ProfileController@search')->name('profiles.search');
+Route::resource('profiles', ProfileController::class);
 
-// Routesd Details Plans
+
+// Routes Details Plans
 Route::delete('plans/{url}/details/{idDetail}', 'PlanDetailController@destroy')->name('plan.details.destroy');
 Route::get('plans/{url}/details/show/{idDetail}', 'PlanDetailController@show')->name('plan.details.show');
 Route::put('plans/{url}/details/{idDetail}', 'PlanDetailController@update')->name('plan.details.update');
