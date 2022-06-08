@@ -15,6 +15,10 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
 
+// Permission x Profile
+Route::get('profiles/{id}/permission/add', 'PermissionProfileController@permissionAvailable')->name('profiles.permissions.available');
+Route::get('profiles/{id}/permissions', 'PermissionProfileController@permissions')->name('profiles.permissions');
+
 // Routes Permissions
 Route::any('permissions/search', 'PermissionController@search')->name('permissions.search');
 Route::resource('permissions', PermissionController::class);

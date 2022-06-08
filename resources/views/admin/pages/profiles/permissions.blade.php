@@ -1,9 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Profiles')
+@section('title', 'Permissões do Perfil')
 
 @section('content_header')
-    <h1>Perfis <a href="{{ route('profiles.create') }}" class="btn btn-dark"><i class="fas fa-plus-square"></i> Adicionar</a></h1>
+    <h1>
+        Permissões do Perfil: 
+        <b>{{ $profile->name }}</b>
+        <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark"><i class="fas fa-plus-square"></i> 
+            Adicionar
+        </a>    
+    </h1>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -34,15 +40,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($profiles as $profile)
+                    @foreach ($permissions as $permission)
                     <tr>
                         <td>
-                            <a href="{{ route('profiles.show', $profile->id) }}">
-                            {{ $profile->name }}
+                            <a href="{{ route('profiles.show', $permission->id) }}">
+                            {{ $permission->name }}
                             </a>
                         </td>
                         <td>
-                            {{ $profile->description }}
+                            {{ $permission->description }}
                         </td>
                         <td width="280">
                             <form action="{{ route('profiles.destroy', $profile->id) }}" method="POST">
@@ -60,9 +66,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $profiles->appends($filters)->links() !!}
+                {!! $permissions->appends($filters)->links() !!}
             @else
-                {!! $profiles->links() !!}
+                {!! $permissions->links() !!}
             @endif
 
         </div>                
