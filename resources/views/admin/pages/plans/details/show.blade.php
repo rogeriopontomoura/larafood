@@ -20,10 +20,9 @@
 @section('content')
     <div class="card">
         <div class="card-header">
+            Plano: {{$plan->name}}
         </div>
         <div class="card-body">
-            <strong>Nome:</strong> {{$plan->name}}
-            <br>
             <strong>Nome:</strong> {{$detail->name}}
         </div>
         <div class="card-footer">

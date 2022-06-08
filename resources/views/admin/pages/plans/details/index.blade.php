@@ -26,7 +26,6 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Preço</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -35,9 +34,6 @@
                     <tr>
                         <td>
                             {{ $detail->name }}    
-                        </td>
-                        <td>
-                            
                         </td>
                         <td width="220">
                             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
