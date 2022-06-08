@@ -12,7 +12,7 @@
             <strong>Nome:</strong> {{ $plan->name }}
         </li>
         <li>
-            <strong>Preço:</strong> {{ number_format($plan->price, 2, ',','.') }}
+            <strong>Preço:</strong> {{  'R$ '.number_format($plan->price, 2, ',', '.') }}
         </li>
         <li>
             <strong>Descrição:</strong> {{ $plan->description }}

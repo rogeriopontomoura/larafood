@@ -41,7 +41,8 @@
                             {{ $plan->name }}
                             </a>   
                         </td>
-                        <td>
+                        <td>                
+                            {{  'R$ '.number_format($plan->price, 2, ',', '.') }}
                         </td>
                         <td width="280">
                             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
