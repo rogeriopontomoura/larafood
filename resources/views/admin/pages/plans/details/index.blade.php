@@ -36,7 +36,7 @@
                             {{ $detail->name }}    
                         </td>
                         <td width="220">
-                            <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
+                            <form action="{{ route('plan.details.destroy', [$plan->url, $detail->id]) }}" method="POST">
                                 <a href="{{ route('plan.details.show', [$plan->url, $detail->id]) }}" class="btn btn-info">Ver</a>
                                 <a href="{{ route('plan.details.edit', [$plan->url, $detail->id]) }}" class="btn btn-warning">Editar</a>
                             
